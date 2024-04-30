@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vServer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Чтобы избежать прокрутки */
+    }
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      z-index: -1; /* Чтобы контейнер с частицами оказался под контентом */
+    }
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #fff;
+      opacity: 0.8;
+      border-radius: 50%;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh);
+      }
+      100% {
+        transform: translateY(110vh);
+      }
+    }
+    .container {
+      text-align: center;
+      margin-top: 100px;
+      position: relative; /* Чтобы контейнер с контентом оказался поверх частиц */
+      z-index: 1; /* Чтобы контейнер с контентом оказался поверх частиц */
+    }
+    .platforms {
+      margin-top: 50px;
+    }
+    .platform {
+      display: inline-block;
+      margin: 0 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .platform img {
+      width: 32px;
+      height: 32px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .coming-soon {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 30px;
+    }
+    li {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="particles">
+    <!-- Контейнер для падающих частиц -->
+    <!-- Генерация частиц с помощью JavaScript -->
+  </div>
+  <div class="container">
+    <h1>vServer</h1>
+    <div class="platforms">
+      <div class="platform">
+        <img src="windows.png" alt="Windows">
+        <button id="windowsBtn" onclick="downloadWindows()">Download</button>
+      </div>
+      <div class="platform">
+        <img src="linux.png" alt="Linux">
+        <button class="coming-soon">Coming Soon</button>
+      </div>
+      <div class="platform">
+        <img src="macos.png" alt="MacOS">
+        <button class="coming-soon">Coming Soon</button>
+      </div>
+    </div>
+    <ul>
+      <li>Description: This program allows you to create your own server on a local network.</li>
+      <li>Author: Vafls</li>
+      <li>License: BSD-2</li>
+      <li>Last Update: 30.04.24</li>
+    </ul>
+  </div>
+
+  <script>
+    var particlesContainer = document.querySelector('.particles');
+    var numParticles = 100; 
+
+    for (var i = 0; i < numParticles; i++) {
+      var particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = Math.random() * 100 + 'vw'; 
+      particle.style.animationDuration = (Math.random() * 2 + 1) + 's';
+      particlesContainer.appendChild(particle);
+    }
+  </script>
+</body>
+</html>
